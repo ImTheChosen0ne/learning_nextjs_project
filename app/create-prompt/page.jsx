@@ -9,7 +9,7 @@ import Form from '@components/Form'
 const CreatePrompt = () => {
     const router = useRouter();
     const { data: session } = useSession();
-    
+
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState({
         prompt: '',
@@ -25,10 +25,11 @@ const CreatePrompt = () => {
                method: 'POST',
                body: JSON.stringify({
                 prompt: post.prompt,
-                userID: session?.user.id,
+                userId: session?.user.id,
                 tag: post.tag
                })
             })
+
 
             if (response.ok) {
                 router.push('/')
